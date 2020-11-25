@@ -1,0 +1,27 @@
+{
+  "name": "node-red-contrib-tello",
+  "version": "1.0.0",
+  "description": "Tello control using Node-RED",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red" : {
+    "nodes": {
+      "lower-case": "node.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miura55/node-red-contrib-tello.git"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "author": "kmiura",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Miura55/node-red-contrib-tello/issues"
+  },
+  "homepage": "https://github.com/Miura55/node-red-contrib-tello#readme"
+}
