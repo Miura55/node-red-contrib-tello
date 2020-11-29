@@ -116,6 +116,51 @@
             return this.name||"left";
         }
     });
+
+    RED.nodes.registerType('clockwise',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            deg: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"clockwise";
+        }
+    });
+
+    RED.nodes.registerType('counterclockwise',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            deg: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"counterclockwise";
+        }
+    });
+
+    RED.nodes.registerType('flip',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            direction: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"flip";
+        }
+    });
 </script>
 
 <!-- takeoff Node -->
@@ -246,3 +291,58 @@
     <p>Distance required 20-500</p>
 </script>
 
+<!-- clockwise Node -->
+<script type="text/x-red" data-template-name="clockwise">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deg">Angle(deg)</label>
+        <input type="number" id="node-input-deg" placeholder="Angle">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="clockwise">
+    <p>This node sends command 'cw' to Tello</p>
+    <p>Angle required 1-360</p>
+</script>
+
+<!-- counterclockwise Node -->
+<script type="text/x-red" data-template-name="counterclockwise">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deg">Angle(deg)</label>
+        <input type="number" id="node-input-deg" placeholder="Angle">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="counterclockwise">
+    <p>This node sends command 'ccw' to Tello</p>
+    <p>Angle required 1-360</p>
+</script>
+
+<!-- flip Node -->
+<script type="text/x-red" data-template-name="flip">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-direction">Direction</label>
+        <select id="node-input-direction" placeholder="Direction">
+            <option value="f">forward</option>
+            <option value="b">back</option>
+            <option value="l">left</option>
+            <option value="r">right</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="flip">
+    <p>This node sends command 'flip' to Tello</p>
+    <p>Direction required to choose from selectbox</p>
+</script>

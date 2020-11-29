@@ -94,7 +94,7 @@ module.exports = function (RED) {
     var node = this;
     node.on("input", function (msg) {
       sendCommand("up " + node.distance);
-      RED.log.info("Result land command: " + telloState);
+      RED.log.info("Result up command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
     });
@@ -107,7 +107,7 @@ module.exports = function (RED) {
     var node = this;
     node.on("input", function (msg) {
       sendCommand("down " + node.distance);
-      RED.log.info("Result land command: " + telloState);
+      RED.log.info("Result down command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
     });
@@ -120,7 +120,7 @@ module.exports = function (RED) {
     var node = this;
     node.on("input", function (msg) {
       sendCommand("forward " + node.distance);
-      RED.log.info("Result land command: " + telloState);
+      RED.log.info("Result forward command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
     });
@@ -133,7 +133,7 @@ module.exports = function (RED) {
     var node = this;
     node.on("input", function (msg) {
       sendCommand("back " + node.distance);
-      RED.log.info("Result land command: " + telloState);
+      RED.log.info("Result back command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
     });
@@ -146,7 +146,7 @@ module.exports = function (RED) {
     var node = this;
     node.on("input", function (msg) {
       sendCommand("right " + node.distance);
-      RED.log.info("Result land command: " + telloState);
+      RED.log.info("Result right command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
     });
@@ -159,10 +159,49 @@ module.exports = function (RED) {
     var node = this;
     node.on("input", function (msg) {
       sendCommand("left " + node.distance);
-      RED.log.info("Result land command: " + telloState);
+      RED.log.info("Result left command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
     });
   }
   RED.nodes.registerType("left", leftNode);
+
+  function clockwiseNode(config) {
+    RED.nodes.createNode(this, config);
+    this.angle = config.deg || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("cw " + node.angle);
+      RED.log.info("Result cw command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("clockwise", clockwiseNode);
+
+  function counterclockwiseNode(config) {
+    RED.nodes.createNode(this, config);
+    this.angle = config.deg || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("ccw " + node.angle);
+      RED.log.info("Result ccw command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("counterclockwise", counterclockwiseNode);
+
+  function flipNode(config) {
+    RED.nodes.createNode(this, config);
+    this.direction = config.direction;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("flip " + node.direction);
+      RED.log.info("Result flip command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("flip", flipNode);
 };
