@@ -87,4 +87,82 @@ module.exports = function (RED) {
     });
   }
   RED.nodes.registerType("land", landNode);
+
+  function upNode(config) {
+    RED.nodes.createNode(this, config);
+    this.distance = config.distance || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("up " + node.distance);
+      RED.log.info("Result land command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("up", upNode);
+
+  function downNode(config) {
+    RED.nodes.createNode(this, config);
+    this.distance = config.distance || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("down " + node.distance);
+      RED.log.info("Result land command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("down", downNode);
+
+  function forwardNode(config) {
+    RED.nodes.createNode(this, config);
+    this.distance = config.distance || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("forward " + node.distance);
+      RED.log.info("Result land command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("forward", forwardNode);
+
+  function backNode(config) {
+    RED.nodes.createNode(this, config);
+    this.distance = config.distance || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("back " + node.distance);
+      RED.log.info("Result land command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("back", backNode);
+
+  function rightNode(config) {
+    RED.nodes.createNode(this, config);
+    this.distance = config.distance || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("right " + node.distance);
+      RED.log.info("Result land command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("right", rightNode);
+
+  function leftNode(config) {
+    RED.nodes.createNode(this, config);
+    this.distance = config.distance || 0;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("left " + node.distance);
+      RED.log.info("Result land command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("left", leftNode);
 };

@@ -4,7 +4,6 @@
         color: '#C0C0C0',
         defaults: {
             name: {value:""},
-            inputText: {value:""}
         },
         inputs:1,
         outputs:1,
@@ -19,13 +18,102 @@
         color: '#C0C0C0',
         defaults: {
             name: {value:""},
-            inputText: {value:""}
         },
         inputs:1,
         outputs:1,
         icon: "font-awesome/fa-plane",
         label: function() {
             return this.name||"land";
+        }
+    });
+
+    RED.nodes.registerType('up',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            distance: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"up";
+        }
+    });
+
+    RED.nodes.registerType('down',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            distance: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"down";
+        }
+    });
+
+    RED.nodes.registerType('forward',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            distance: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"forward";
+        }
+    });
+
+    RED.nodes.registerType('back',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            distance: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"back";
+        }
+    });
+
+    RED.nodes.registerType('right',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            distance: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"right";
+        }
+    });
+
+    RED.nodes.registerType('left',{
+        category: 'Tello',
+        color: '#C0C0C0',
+        defaults: {
+            name: {value:""},
+            distance: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"left";
         }
     });
 </script>
@@ -53,3 +141,108 @@
 <script type="text/x-red" data-help-name="land">
     <p>This node sends command 'land' to Tello</p>
 </script>
+
+<!-- up Node -->
+<script type="text/x-red" data-template-name="up">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-distance">Distance(cm)</label>
+        <input type="number" id="node-input-distance" placeholder="Distance">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="up">
+    <p>This node sends command 'down' to Tello</p>
+    <p>Distance required 20-500</p>
+</script>
+
+<!-- down Node -->
+<script type="text/x-red" data-template-name="down">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-distance">Distance(cm)</label>
+        <input type="number" id="node-input-distance" placeholder="Distance">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="down">
+    <p>This node sends command 'down' to Tello</p>
+    <p>Distance required 20-500</p>
+</script>
+
+<!-- forward Node -->
+<script type="text/x-red" data-template-name="forward">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-distance">Distance(cm)</label>
+        <input type="number" id="node-input-distance" placeholder="Distance">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="forward">
+    <p>This node sends command 'forward' to Tello</p>
+    <p>Distance required 20-500</p>
+</script>
+
+
+<!-- back Node -->
+<script type="text/x-red" data-template-name="back">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-distance">Distance(cm)</label>
+        <input type="number" id="node-input-distance" placeholder="Distance">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="back">
+    <p>This node sends command 'back' to Tello</p>
+    <p>Distance required 20-500</p>
+</script>
+
+<!-- right Node -->
+<script type="text/x-red" data-template-name="right">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-distance">Distance(cm)</label>
+        <input type="number" id="node-input-distance" placeholder="Distance">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="right">
+    <p>This node sends command 'right' to Tello</p>
+    <p>Distance required 20-500</p>
+</script>
+
+
+<!-- left Node -->
+<script type="text/x-red" data-template-name="left">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-distance">Distance(cm)</label>
+        <input type="number" id="node-input-distance" placeholder="Distance">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="left">
+    <p>This node sends command 'left' to Tello</p>
+    <p>Distance required 20-500</p>
+</script>
+
