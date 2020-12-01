@@ -57,7 +57,7 @@ const listenState = function () {
   server.bind(SERVER_PORT, SERVER_HOST);
 };
 
-// Ready to Flight
+// Start of command
 sendCommand("command");
 
 // start listen state
@@ -204,4 +204,30 @@ module.exports = function (RED) {
     });
   }
   RED.nodes.registerType("flip", flipNode);
+
+  function speedNode(config) {
+    RED.nodes.createNode(this, config);
+    this.direction = config.direction;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("speed " + node.direction);
+
+      RED.log.info("Result speed command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("speed", speedNode);
+
+  function batteryNode(config) {
+    RED.nodes.createNode(this, config);
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("battery?");
+      RED.log.info("Result battery command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("battery", batteryNode);
 };

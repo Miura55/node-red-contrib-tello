@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('takeoff',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
         },
@@ -15,7 +15,7 @@
 
     RED.nodes.registerType('land',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
         },
@@ -29,7 +29,7 @@
 
     RED.nodes.registerType('up',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             distance: {value:""}
@@ -44,7 +44,7 @@
 
     RED.nodes.registerType('down',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             distance: {value:""}
@@ -59,7 +59,7 @@
 
     RED.nodes.registerType('forward',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             distance: {value:""}
@@ -74,7 +74,7 @@
 
     RED.nodes.registerType('back',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             distance: {value:""}
@@ -89,7 +89,7 @@
 
     RED.nodes.registerType('right',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             distance: {value:""}
@@ -104,7 +104,7 @@
 
     RED.nodes.registerType('left',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             distance: {value:""}
@@ -119,7 +119,7 @@
 
     RED.nodes.registerType('clockwise',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             deg: {value:""}
@@ -134,7 +134,7 @@
 
     RED.nodes.registerType('counterclockwise',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             deg: {value:""}
@@ -149,7 +149,7 @@
 
     RED.nodes.registerType('flip',{
         category: 'Tello',
-        color: '#C0C0C0',
+        color: '#ff993f',
         defaults: {
             name: {value:""},
             direction: {value:""}
@@ -159,6 +159,35 @@
         icon: "font-awesome/fa-plane",
         label: function() {
             return this.name||"flip";
+        }
+    });
+
+    RED.nodes.registerType('speed',{
+        category: 'Tello',
+        color: '#ff993f',
+        defaults: {
+            name: {value:""},
+            speed: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-plane",
+        label: function() {
+            return this.name||"speed";
+        }
+    });
+
+    RED.nodes.registerType('battery',{
+        category: 'Tello',
+        color: '#ff993f',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-battery-half",
+        label: function() {
+            return this.name||"Ask battery";
         }
     });
 </script>
@@ -345,4 +374,33 @@
 <script type="text/x-red" data-help-name="flip">
     <p>This node sends command 'flip' to Tello</p>
     <p>Direction required to choose from selectbox</p>
+</script>
+
+<!-- Speed Node -->
+<script type="text/x-red" data-template-name="speed">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-speed">Speed(cm/s)</label>
+        <input type="number" id="node-input-speed" placeholder="Speed">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="speed">
+    <p>This node sends command 'speed' to Tello</p>
+    <p>Distance required 10-100</p>
+</script>
+
+<!-- Ask Battery Node -->
+<script type="text/x-red" data-template-name="battery">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="battery">
+    <p>This node sends command 'battery?' to Tello</p>
 </script>
