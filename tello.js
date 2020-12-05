@@ -28,7 +28,7 @@ const sendCommand = (command) => {
   );
 };
 
-// start recieve responce from Tello
+// Recieve responce from Tello
 client.on("message", function (msg, info) {
   console.log("Tello's Response: " + msg.toString());
   console.log(
@@ -57,9 +57,6 @@ const listenState = function () {
   server.bind(SERVER_PORT, SERVER_HOST);
 };
 
-// Start of command
-sendCommand("command");
-
 // start listen state
 listenState();
 
@@ -68,6 +65,7 @@ module.exports = function (RED) {
     RED.nodes.createNode(this, config);
     var node = this;
     node.on("input", function (msg) {
+      sendCommand("command");
       sendCommand("takeoff");
       RED.log.info("Result takeoff command: " + telloState);
       msg.payload = telloState;
@@ -223,10 +221,28 @@ module.exports = function (RED) {
     RED.nodes.createNode(this, config);
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("battery?");
-      RED.log.info("Result battery command: " + telloState);
-      msg.payload = telloState;
-      node.send(msg);
+      Promise.resolve()
+        .then(function () {
+          sendCommand("command");
+        })
+        .then(function () {
+          return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+              sendCommand("battery?");
+              resolve();
+            }, 500);
+          });
+        })
+        .then(function () {
+          return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+              RED.log.info("Result battery command: " + telloState);
+              msg.payload = telloState;
+              node.send(msg);
+              resolve();
+            }, 500);
+          });
+        });
     });
   }
   RED.nodes.registerType("battery", batteryNode);
