@@ -177,17 +177,18 @@
         }
     });
 
-    RED.nodes.registerType('battery',{
+    RED.nodes.registerType('state',{
         category: 'Tello',
         color: '#ff993f',
         defaults: {
             name: {value:""},
+            command: {value:""}
         },
         inputs:1,
         outputs:1,
-        icon: "font-awesome/fa-battery-half",
+        icon: "font-awesome/fa-search",
         label: function() {
-            return this.name||"Ask battery";
+            return this.name||"state";
         }
     });
 </script>
@@ -393,14 +394,28 @@
     <p>Distance required 10-100</p>
 </script>
 
-<!-- Ask Battery Node -->
-<script type="text/x-red" data-template-name="battery">
+<!-- Ask State Node -->
+<script type="text/x-red" data-template-name="state">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
+    <div class="form-row">
+        <label for="node-input-command">Command</label>
+        <select id="node-input-command" placeholder="Command">
+            <option value="battery?">battery?</option>
+            <option value="speed?">speed?</option>
+            <option value="time?">time?</option>
+            <option value="height?">height?</option>
+            <option value="temp?">temp?</option>
+            <option value="attitude?">attitude?</option>
+            <option value="baro?">baro?</option>
+            <option value="acceleration?">acceleration?</option>
+            <option value="tof?">tof?</option>
+            <option value="wifi?">wifi?</option>
+        </select>
+    </div>
 </script>
-
-<script type="text/x-red" data-help-name="battery">
-    <p>This node sends command 'battery?' to Tello</p>
+<script type="text/x-red" data-help-name="state">
+    <p>This node sends state command to Tello</p>
 </script>

@@ -217,8 +217,9 @@ module.exports = function (RED) {
   }
   RED.nodes.registerType("speed", speedNode);
 
-  function batteryNode(config) {
+  function stateNode(config) {
     RED.nodes.createNode(this, config);
+    this.command = config.command || "";
     var node = this;
     node.on("input", function (msg) {
       Promise.resolve()
@@ -228,7 +229,7 @@ module.exports = function (RED) {
         .then(function () {
           return new Promise(function (resolve, reject) {
             setTimeout(function () {
-              sendCommand("battery?");
+              sendCommand(node.command);
               resolve();
             }, 500);
           });
@@ -236,7 +237,7 @@ module.exports = function (RED) {
         .then(function () {
           return new Promise(function (resolve, reject) {
             setTimeout(function () {
-              RED.log.info("Result battery command: " + telloState);
+              RED.log.info("Result state command: " + telloState);
               msg.payload = telloState;
               node.send(msg);
               resolve();
@@ -245,5 +246,5 @@ module.exports = function (RED) {
         });
     });
   }
-  RED.nodes.registerType("battery", batteryNode);
+  RED.nodes.registerType("state", stateNode);
 };
