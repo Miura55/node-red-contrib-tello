@@ -2,7 +2,6 @@ const dgram = require("dgram");
 const client = dgram.createSocket("udp4");
 const server = dgram.createSocket("udp4");
 
-var osdData = {};
 var telloState = "";
 
 const CLIENT_HOST = "192.168.10.1";
@@ -80,10 +79,11 @@ module.exports = function (RED) {
 
   function upNode(config) {
     RED.nodes.createNode(this, config);
-    this.distance = config.distance || 0;
+    this.distance = config.distance;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("up " + node.distance);
+      var distance = node.distance || msg.payload;
+      sendCommand("up " + distance);
       RED.log.info("Result up command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
@@ -93,10 +93,11 @@ module.exports = function (RED) {
 
   function downNode(config) {
     RED.nodes.createNode(this, config);
-    this.distance = config.distance || 0;
+    this.distance = config.distance;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("down " + node.distance);
+      var distance = node.distance || msg.payload;
+      sendCommand("down " + distance);
       RED.log.info("Result down command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
@@ -106,10 +107,11 @@ module.exports = function (RED) {
 
   function forwardNode(config) {
     RED.nodes.createNode(this, config);
-    this.distance = config.distance || 0;
+    this.distance = config.distance;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("forward " + node.distance);
+      var distance = node.distance || msg.payload;
+      sendCommand("forward " + distance);
       RED.log.info("Result forward command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
@@ -119,10 +121,11 @@ module.exports = function (RED) {
 
   function backNode(config) {
     RED.nodes.createNode(this, config);
-    this.distance = config.distance || 0;
+    this.distance = config.distance;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("back " + node.distance);
+      var distance = node.distance || msg.payload;
+      sendCommand("back " + distance);
       RED.log.info("Result back command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
@@ -132,10 +135,11 @@ module.exports = function (RED) {
 
   function rightNode(config) {
     RED.nodes.createNode(this, config);
-    this.distance = config.distance || 0;
+    this.distance = config.distance;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("right " + node.distance);
+      var distance = node.distance || msg.payload;
+      sendCommand("right " + distance);
       RED.log.info("Result right command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
@@ -145,10 +149,11 @@ module.exports = function (RED) {
 
   function leftNode(config) {
     RED.nodes.createNode(this, config);
-    this.distance = config.distance || 0;
+    this.distance = config.distance;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("left " + node.distance);
+      var distance = node.distance || msg.payload;
+      sendCommand("left " + distance);
       RED.log.info("Result left command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
@@ -158,10 +163,11 @@ module.exports = function (RED) {
 
   function clockwiseNode(config) {
     RED.nodes.createNode(this, config);
-    this.angle = config.deg || 0;
+    this.angle = config.deg;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("cw " + node.angle);
+      var angle = node.angle || msg.payload;
+      sendCommand("cw " + angle);
       RED.log.info("Result cw command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
@@ -171,10 +177,11 @@ module.exports = function (RED) {
 
   function counterclockwiseNode(config) {
     RED.nodes.createNode(this, config);
-    this.angle = config.deg || 0;
+    this.angle = config.deg;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("ccw " + node.angle);
+      var angle = node.angle || msg.payload;
+      sendCommand("ccw " + angle);
       RED.log.info("Result ccw command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
