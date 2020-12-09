@@ -41,14 +41,6 @@ client.on("message", function (msg, info) {
 });
 
 const listenState = function () {
-  server.on("message", (msg, info) => {
-    msg = msg.toString().trim();
-    const fieldList = msg.split(";");
-    fieldList.forEach(function (field) {
-      let [key, value] = field.split(":");
-      osdData[key] = value;
-    });
-  });
   server.on("listening", () => {
     const address = server.address();
     console.log(address);

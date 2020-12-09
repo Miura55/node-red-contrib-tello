@@ -16,7 +16,9 @@
     "url": "git+https://github.com/Miura55/node-red-contrib-tello.git"
   },
   "keywords": [
-    "node-red"
+    "node-red",
+    "Tello",
+    "Drone"
   ],
   "author": "kmiura",
   "license": "Apache-2.0",
