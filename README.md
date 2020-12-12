@@ -2,12 +2,15 @@
 
 [![Platform](https://img.shields.io/badge/platform-Node--RED-red)](https://nodered.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+[![npm version](https://badge.fury.io/js/node-red-contrib-tello.svg)](https://badge.fury.io/js/node-red-contrib-tello)
+![npm](https://img.shields.io/npm/dt/node-red-contrib-tello.svg)
 
 This node uses [Tello SDK 2.0](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf) commands.
 
 ## Thaks for your donation
 
 If you want to support this free project. Any help is welcome. You can donate by clicking one of the following here:
+
 [![Donate](https://d1iczxrky3cnb2.cloudfront.net/button-medium-blue.png)](https://donorbox.org/donation-for-node-red-contrib-tello-1?default_interval=o)
 
 ## Install
