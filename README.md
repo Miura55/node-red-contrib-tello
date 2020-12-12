@@ -1,9 +1,14 @@
 # node-red-contrib-tello
 
 [![Platform](https://img.shields.io/badge/platform-Node--RED-red)](https://nodered.org)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This node uses [Tello SDK 2.0](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf) commands.
+
+## Thaks for your donation
+
+If you want to support this free project. Any help is welcome. You can donate by clicking one of the following here:
+[![Donate](https://d1iczxrky3cnb2.cloudfront.net/button-medium-blue.png)](https://donorbox.org/donation-for-node-red-contrib-tello-1?default_interval=o)
 
 ## Install
 
@@ -20,6 +25,22 @@ $ npm install node-red-contrib-tello
 - Click `Add Node` tab
 - Type `node-red-contrib-tello`
 - Install
+
+## All Nodes
+
+|       node       | about                                                                         |
+| :--------------: | ----------------------------------------------------------------------------- |
+|     takeoff      | Send command `takeoff` to Tello                                               |
+|       land       | Send `land` to Tello                                                          |
+|        up        | Send `up` to Tello. If Distance form is blank, it refers to `msg.payload`,    |
+|       down       | Send `down` to Tello. If Distance form is blank, it refers to `msg.payload`.  |
+|       left       | Send `left` to Tello. If Distance form is blank, it refers to `msg.paylaod`.  |
+|      right       | Send `right` to Tello. If Distance form is blank, it refers to `msg.payload`. |
+|    clockwise     | Send `cw` to Tello. If Angle form is blank, it refers to `msg.payload`.       |
+| counterclockwise | Send `ccw` to Tello. If Angle form is blank, it refers to `msg.payload`.      |
+|       flip       | Send `flip` to Tello. Direction required to selectbox.                        |
+|      speed       | Send `speed` to Tello. If Speed form is blank, it refers to `msg.paylaod`.    |
+|      state       | Send state commands to Tello. These commands select select from select.       |
 
 ## Example Flows
 

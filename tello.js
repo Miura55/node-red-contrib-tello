@@ -204,11 +204,11 @@ module.exports = function (RED) {
 
   function speedNode(config) {
     RED.nodes.createNode(this, config);
-    this.direction = config.direction;
+    this.speed = config.speed;
     var node = this;
     node.on("input", function (msg) {
-      sendCommand("speed " + node.direction);
-
+      var speed = node.speed || msg.payload;
+      sendCommand("speed " + speed);
       RED.log.info("Result speed command: " + telloState);
       msg.payload = telloState;
       node.send(msg);
