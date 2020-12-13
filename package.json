@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-tello",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tello control using Node-RED",
   "main": "tello.js",
   "scripts": {
