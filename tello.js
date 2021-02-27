@@ -216,6 +216,34 @@ module.exports = function (RED) {
   }
   RED.nodes.registerType("speed", speedNode);
 
+  function streamOnNode(config) {
+    RED.nodes.createNode(this, config);
+    this.speed = config.speed;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("command");
+      sendCommand("streamon");
+      RED.log.info("Result streamon command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("streamon", streamOnNode);
+
+  function streamOffNode(config) {
+    RED.nodes.createNode(this, config);
+    this.speed = config.speed;
+    var node = this;
+    node.on("input", function (msg) {
+      sendCommand("command");
+      sendCommand("streamoff");
+      RED.log.info("Result streamoff command: " + telloState);
+      msg.payload = telloState;
+      node.send(msg);
+    });
+  }
+  RED.nodes.registerType("streamoff", streamOffNode);
+
   function stateNode(config) {
     RED.nodes.createNode(this, config);
     this.command = config.command || "";
