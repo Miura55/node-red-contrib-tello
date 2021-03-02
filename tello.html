@@ -191,6 +191,34 @@
             return this.name||"state";
         }
     });
+
+    RED.nodes.registerType('streamon',{
+        category: 'Tello',
+        color: '#ff993f',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-video-camera",
+        label: function() {
+            return this.name||"streamon";
+        }
+    });
+
+    RED.nodes.registerType('streamoff',{
+        category: 'Tello',
+        color: '#ff993f',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-video-camera",
+        label: function() {
+            return this.name||"streamoff";
+        }
+    });
 </script>
 
 <!-- takeoff Node -->
@@ -401,6 +429,30 @@
     <p>This node sends command 'speed' to Tello</p>
     <p>Distance required 10-100</p>
     <p>If Speed form is blank, it refers <code>msg.payload</code> value</p>
+</script>
+
+<!-- streamon Node -->
+<script type="text/x-red" data-template-name="streamon">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="streamon">
+    <p>This node sends command 'streamon' to Tello</p>
+</script>
+
+<!-- streamoff Node -->
+<script type="text/x-red" data-template-name="streamoff">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="streamoff">
+    <p>This node sends command 'streamoff' to Tello</p>
 </script>
 
 <!-- Ask State Node -->
